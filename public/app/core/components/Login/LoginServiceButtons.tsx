@@ -82,17 +82,24 @@ export const LoginServiceButtons = () => {
 
   const serviceElements = serviceElementsEnabled.map(key => {
     const service: LoginService = loginServices()[key];
-    return (
-      <a
-        key={key}
-        className={`btn btn-medium btn-service btn-service--${service.className || key} login-btn`}
-        href={`login/${service.hrefName ? service.hrefName : key}`}
-        target="_self"
-      >
-        <i className={`btn-service-icon fa fa-${service.icon ? service.icon : key}`} />
-        Sign in with {service.name}
-      </a>
-    );
+    const showbutton = false; //此行为新添加
+    if (showbutton) {
+      //此行为新添加
+      return (
+        <a
+          key={key}
+          className={`btn btn-medium btn-service btn-service--${service.className || key} login-btn`}
+          href={`login/${service.hrefName ? service.hrefName : key}`}
+          target="_self"
+        >
+          <i className={`btn-service-icon fa fa-${service.icon ? service.icon : key}`} />
+          Sign in with {service.name}
+        </a>
+      );
+    } else {
+      //此行为新添加
+      return null; //此行为新添加
+    } //此行为新添加
   });
 
   const divider = LoginDivider();
