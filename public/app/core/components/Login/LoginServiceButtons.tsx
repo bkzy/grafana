@@ -1,10 +1,12 @@
+/*
 import React from 'react';
 import config from 'app/core/config';
 import { css, cx } from '@emotion/css';
 import { Icon, IconName, LinkButton, useStyles, useTheme2, VerticalGroup } from '@grafana/ui';
 import { GrafanaTheme, GrafanaTheme2 } from '@grafana/data';
 import { pickBy } from 'lodash';
-
+*/
+import { IconName } from '@grafana/ui';
 export interface LoginService {
   bgColor: string;
   enabled: boolean;
@@ -16,7 +18,7 @@ export interface LoginService {
 export interface LoginServices {
   [key: string]: LoginService;
 }
-
+/*
 const loginServices: () => LoginServices = () => {
   const oauthEnabled = !!config.oauth;
 
@@ -138,13 +140,13 @@ function getButtonStyleFor(service: LoginService, styles: ReturnType<typeof getS
     `
   );
 }
-
+*/
 export const LoginServiceButtons = () => {
-  const enabledServices = pickBy(loginServices(), (service) => service.enabled);
-  const hasServices = Object.keys(enabledServices).length > 0;
-  const theme = useTheme2();
-  const styles = useStyles(getServiceStyles);
-
+  //const enabledServices = pickBy(loginServices(), (service) => service.enabled);
+  //const hasServices = Object.keys(enabledServices).length > 0;
+  //const theme = useTheme2();
+  //const styles = useStyles(getServiceStyles);
+  /*
   if (hasServices) {
     return (
       <VerticalGroup>
@@ -164,6 +166,6 @@ export const LoginServiceButtons = () => {
       </VerticalGroup>
     );
   }
-
+  */
   return null;
 };

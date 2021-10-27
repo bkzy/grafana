@@ -17,8 +17,8 @@ export const newLink = {
 } as DashboardLink;
 
 const linkTypeOptions = [
-  { value: 'dashboards', label: 'Dashboards' },
-  { value: 'link', label: 'Link' },
+  { value: 'dashboards', label: 'Dashboards(仪表盘)' },
+  { value: 'link', label: 'Link(链接)' },
 ];
 
 export const linkIconMap: { [key: string]: string } = {
@@ -83,16 +83,16 @@ export const LinkSettingsEdit: React.FC<LinkSettingsEditProps> = ({ editLinkIdx,
 
   return (
     <div style={{ maxWidth: '600px' }}>
-      <Field label="Title">
+      <Field label="标题">
         <Input name="title" id="title" value={linkSettings.title} onChange={onChange} autoFocus={isNew} />
       </Field>
-      <Field label="Type">
+      <Field label="类型">
         <Select menuShouldPortal value={linkSettings.type} options={linkTypeOptions} onChange={onTypeChange} />
       </Field>
       {linkSettings.type === 'dashboards' && (
         <>
-          <Field label="With tags">
-            <TagsInput tags={linkSettings.tags} placeholder="add tags" onChange={onTagsChange} />
+          <Field label="带标签(tags)">
+            <TagsInput tags={linkSettings.tags} placeholder="添加标签(add tags)" onChange={onTagsChange} />
           </Field>
         </>
       )}
@@ -101,23 +101,23 @@ export const LinkSettingsEdit: React.FC<LinkSettingsEditProps> = ({ editLinkIdx,
           <Field label="URL">
             <Input name="url" value={linkSettings.url} onChange={onChange} />
           </Field>
-          <Field label="Tooltip">
-            <Input name="tooltip" value={linkSettings.tooltip} onChange={onChange} placeholder="Open dashboard" />
+          <Field label="提示信息">
+            <Input name="tooltip" value={linkSettings.tooltip} onChange={onChange} placeholder="打开仪表盘" />
           </Field>
           <Field label="Icon">
             <Select menuShouldPortal value={linkSettings.icon} options={linkIconOptions} onChange={onIconChange} />
           </Field>
         </>
       )}
-      <CollapsableSection label="Options" isOpen={true}>
+      <CollapsableSection label="选项" isOpen={true}>
         {linkSettings.type === 'dashboards' && (
           <Field>
-            <Checkbox label="Show as dropdown" name="asDropdown" value={linkSettings.asDropdown} onChange={onChange} />
+            <Checkbox label="显示为下拉菜单" name="asDropdown" value={linkSettings.asDropdown} onChange={onChange} />
           </Field>
         )}
         <Field>
           <Checkbox
-            label="Include current time range"
+            label="Include current time range(包含当前时间)"
             name="keepTime"
             value={linkSettings.keepTime}
             onChange={onChange}
@@ -125,7 +125,7 @@ export const LinkSettingsEdit: React.FC<LinkSettingsEditProps> = ({ editLinkIdx,
         </Field>
         <Field>
           <Checkbox
-            label="Include current template variable values"
+            label="Include current template variable values(包含当前临时变量值)"
             name="includeVars"
             value={linkSettings.includeVars}
             onChange={onChange}
@@ -133,7 +133,7 @@ export const LinkSettingsEdit: React.FC<LinkSettingsEditProps> = ({ editLinkIdx,
         </Field>
         <Field>
           <Checkbox
-            label="Open link in new tab"
+            label="Open link in new tab(在新标签中打开)"
             name="targetBlank"
             value={linkSettings.targetBlank}
             onChange={onChange}

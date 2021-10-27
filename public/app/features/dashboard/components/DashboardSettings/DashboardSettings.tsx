@@ -46,21 +46,24 @@ export class DashboardSettings extends PureComponent<Props> {
       pages.push(this.getGeneralPage());
 
       pages.push({
-        title: 'Annotations',
+        //title: 'Annotations',
+        title: '注释',
         id: 'annotations',
         icon: 'comment-alt',
         render: () => <AnnotationsSettings dashboard={dashboard} />,
       });
 
       pages.push({
-        title: 'Variables',
+        //title: 'Variables',
+        title: '变量',
         id: 'templating',
         icon: 'calculator-alt',
         render: () => <VariableEditorContainer />,
       });
 
       pages.push({
-        title: 'Links',
+        //title: 'Links',
+        title: '链接',
         id: 'links',
         icon: 'link',
         render: () => <LinksSettings dashboard={dashboard} />,
@@ -69,7 +72,8 @@ export class DashboardSettings extends PureComponent<Props> {
 
     if (dashboard.meta.canMakeEditable) {
       pages.push({
-        title: 'General',
+        //title: 'General',
+        title: '常规',
         icon: 'sliders-v-alt',
         id: 'settings',
         render: () => this.renderMakeEditable(),
@@ -78,7 +82,8 @@ export class DashboardSettings extends PureComponent<Props> {
 
     if (dashboard.id && dashboard.meta.canSave) {
       pages.push({
-        title: 'Versions',
+        //title: 'Versions',
+        title: '版本',
         id: 'versions',
         icon: 'history',
         render: () => <VersionsSettings dashboard={dashboard} />,
@@ -87,7 +92,8 @@ export class DashboardSettings extends PureComponent<Props> {
 
     if (dashboard.id && dashboard.meta.canAdmin) {
       pages.push({
-        title: 'Permissions',
+        //title: 'Permissions',
+        title: '权限',
         id: 'permissions',
         icon: 'lock',
         render: () => <DashboardPermissions dashboard={dashboard} />,
@@ -95,7 +101,8 @@ export class DashboardSettings extends PureComponent<Props> {
     }
 
     pages.push({
-      title: 'JSON Model',
+      //title: 'JSON Model',
+      title: 'JSON模式',
       id: 'dashboard_json',
       icon: 'arrow',
       render: () => <JsonEditorSettings dashboard={dashboard} />,
@@ -129,7 +136,8 @@ export class DashboardSettings extends PureComponent<Props> {
 
   getGeneralPage(): SettingsPage {
     return {
-      title: 'General',
+      //title: 'General',
+      title: '常规',
       id: 'settings',
       icon: 'sliders-v-alt',
       render: () => <GeneralSettings dashboard={this.props.dashboard} />,
@@ -147,7 +155,7 @@ export class DashboardSettings extends PureComponent<Props> {
 
     return (
       <div className="dashboard-settings">
-        <PageToolbar title={`${dashboard.title} / Settings`} parent={folderTitle} onGoBack={this.onClose} />
+        <PageToolbar title={`${dashboard.title} / 设置`} parent={folderTitle} onGoBack={this.onClose} />
         <CustomScrollbar>
           <div className={styles.scrollInner}>
             <div className={styles.settingsWrapper}>

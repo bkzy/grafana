@@ -33,9 +33,11 @@ export const DeleteDashboardModal: React.FC<DeleteDashboardModalProps> = ({ hide
       body={modalBody}
       onConfirm={onConfirm}
       onDismiss={hideModal}
-      title="Delete"
+      //title="Delete"
+      title="删除"
       icon="trash-alt"
-      confirmText="Delete"
+      //confirmText="Delete"
+      confirmText="删除"
     />
   );
 };
@@ -44,15 +46,14 @@ const getModalBody = (panels: PanelModel[], title: string) => {
   const totalAlerts = sumBy(panels, (panel) => (panel.alert ? 1 : 0));
   return totalAlerts > 0 && !config.unifiedAlertingEnabled ? (
     <>
-      <p>Do you want to delete this dashboard?</p>
+      <p>您确认要删除此仪表盘吗?</p>
       <p>
-        This dashboard contains {totalAlerts} alert{totalAlerts > 1 ? 's' : ''}. Deleting this dashboard also deletes
-        those alerts.
+        此仪表盘包含 {totalAlerts} 报警{totalAlerts > 1 ? 's' : ''}. 删除此仪表盘也会删除这些报警。
       </p>
     </>
   ) : (
     <>
-      <p>Do you want to delete this dashboard?</p>
+      <p>您确认要删除此仪表盘吗?</p>
       <p>{title}</p>
     </>
   );
@@ -61,7 +62,8 @@ const getModalBody = (panels: PanelModel[], title: string) => {
 const ProvisionedDeleteModal = ({ hideModal, provisionedId }: { hideModal(): void; provisionedId: string }) => (
   <Modal
     isOpen={true}
-    title="Cannot delete provisioned dashboard"
+    //title="Cannot delete provisioned dashboard"
+    title="不能删除供应的(provisioned)仪表盘"
     icon="trash-alt"
     onDismiss={hideModal}
     className={css`
@@ -69,24 +71,22 @@ const ProvisionedDeleteModal = ({ hideModal, provisionedId }: { hideModal(): voi
     `}
   >
     <p>
-      This dashboard is managed by Grafana provisioning and cannot be deleted. Remove the dashboard from the config file
-      to delete it.
+      <>此仪表板由Grafana provisioning管理，无法删除。请从配置文件中移除该仪表板以将其删除。</>
     </p>
     <p>
       <i>
-        See{' '}
+        更多关于 provisioning 的信息请查看{' '}
         <a
           className="external-link"
           href="https://grafana.com/docs/grafana/latest/administration/provisioning/#dashboards"
           target="_blank"
           rel="noreferrer"
         >
-          documentation
-        </a>{' '}
-        for more information about provisioning.
+          文档
+        </a>
       </i>
       <br />
-      File path: {provisionedId}
+      文件路径: {provisionedId}
     </p>
     <Modal.ButtonRow>
       <Button variant="primary" onClick={hideModal}>

@@ -14,7 +14,7 @@ export interface ViewJsonModalProps {
 export function ViewJsonModal({ json, onDismiss }: ViewJsonModalProps): JSX.Element {
   const getClipboardText = useCallback(() => json, [json]);
   const onClipboardCopy = () => {
-    dispatch(notifyApp(createSuccessNotification('Content copied to clipboard')));
+    dispatch(notifyApp(createSuccessNotification('Content copied to clipboard(已复制到剪贴板)')));
   };
   return (
     <Modal title="JSON" onDismiss={onDismiss} onClickBackdrop={onDismiss} isOpen>

@@ -43,7 +43,7 @@ export function PanelEditorTableView({ width, height, panel, dashboard }: Props)
     <PanelChrome width={width} height={height} padding="none">
       {(innerWidth, innerHeight) => (
         <PanelRenderer
-          title="Raw data"
+          title="Raw data(原始数据)"
           pluginId="table"
           width={innerWidth}
           height={innerHeight}

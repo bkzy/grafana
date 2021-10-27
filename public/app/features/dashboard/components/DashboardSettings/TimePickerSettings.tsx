@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { PureComponent } from 'react';
 import { Input, TimeZonePicker, Field, Switch, CollapsableSection } from '@grafana/ui';
 import { rangeUtil, TimeZone } from '@grafana/data';
@@ -58,8 +59,15 @@ export class TimePickerSettings extends PureComponent<Props, State> {
 
   render() {
     return (
-      <CollapsableSection label="Time options" isOpen={true}>
-        <Field label="Timezone" aria-label={selectors.components.TimeZonePicker.container}>
+      <CollapsableSection 
+        //label="Time options" 
+        label="时间选项"
+        isOpen={true}
+      >
+        <Field 
+          //label="Timezone" 
+          label="时区" 
+        aria-label={selectors.components.TimeZonePicker.container}>
           <TimeZonePicker
             includeInternal={true}
             value={this.props.timezone}
@@ -72,8 +80,10 @@ export class TimePickerSettings extends PureComponent<Props, State> {
           onRefreshIntervalChange={this.props.onRefreshIntervalChange}
         />
         <Field
-          label="Now delay now"
-          description="Enter 1m to ignore the last minute. It might contain incomplete metrics."
+          //label="Now delay now"
+          //description="Enter 1m to ignore the last minute. It might contain incomplete metrics."
+          label = "当前时间的延迟"
+          description = "输入1m忽略最后一分钟。时间延迟后可能包含不完整的数据。"
         >
           <Input
             invalid={!this.state.isNowDelayValid}
@@ -82,12 +92,17 @@ export class TimePickerSettings extends PureComponent<Props, State> {
             defaultValue={this.props.nowDelay}
           />
         </Field>
-        <Field label="Hide time picker">
+        <Field 
+          //label="Hide time picker"
+          label = "隐藏时间拾取器"
+        >
           <Switch value={!!this.props.timePickerHidden} onChange={this.onHideTimePickerChange} />
         </Field>
         <Field
-          label="Refresh live dashboards"
-          description="Continuously re-draw panels where the time range references 'now'"
+          //label="Refresh live dashboards"
+          label = "刷新实时仪表盘"
+          //description="Continuously re-draw panels where the time range references 'now'"
+          description = "持续重新绘制时间范围参照“现在”的面板"
         >
           <Switch value={!!this.props.liveNow} onChange={this.onLiveNowChange} />
         </Field>

@@ -44,29 +44,29 @@ export const useInspectTabs = (
   return useMemo(() => {
     const tabs = [];
     if (supportsDataQuery(plugin)) {
-      tabs.push({ label: 'Data', value: InspectTab.Data });
-      tabs.push({ label: 'Stats', value: InspectTab.Stats });
+      tabs.push({ label: 'Data(数据)', value: InspectTab.Data });
+      tabs.push({ label: 'Stats(统计)', value: InspectTab.Stats });
     }
 
     if (metaDs) {
-      tabs.push({ label: 'Meta Data', value: InspectTab.Meta });
+      tabs.push({ label: 'Meta Data(元数据)', value: InspectTab.Meta });
     }
 
     tabs.push({ label: 'JSON', value: InspectTab.JSON });
 
     if (error && error.message) {
-      tabs.push({ label: 'Error', value: InspectTab.Error });
+      tabs.push({ label: 'Error(错误)', value: InspectTab.Error });
     }
 
     // This is a quick internal hack to allow custom actions in inspect
     // For 8.1, something like this should be exposed through grafana/runtime
     const supplier = (window as any).grafanaPanelInspectActionSupplier as PanelInspectActionSupplier;
     if (supplier && supplier.getActions(panel)) {
-      tabs.push({ label: 'Actions', value: InspectTab.Actions });
+      tabs.push({ label: 'Actions(动作)', value: InspectTab.Actions });
     }
 
     if (dashboard.meta.canEdit && supportsDataQuery(plugin)) {
-      tabs.push({ label: 'Query', value: InspectTab.Query });
+      tabs.push({ label: 'Query(查询)', value: InspectTab.Query });
     }
     return tabs;
   }, [panel, plugin, metaDs, dashboard, error]);

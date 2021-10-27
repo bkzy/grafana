@@ -34,7 +34,8 @@ export const DashboardPicker: FC<StandardEditorProps<string, any, any>> = ({ val
     const res = await backendSrv.getDashboardByUid(value);
     setCurrent({
       value: res.dashboard.uid,
-      label: `${res.meta?.folderTitle ?? 'General'}/${res.dashboard.title}`,
+      //label: `${res.meta?.folderTitle ?? 'General'}/${res.dashboard.title}`,
+      label: `${res.meta?.folderTitle ?? '全部'}/${res.dashboard.title}`,
     });
     return undefined;
   }, [value]);
@@ -55,8 +56,10 @@ export const DashboardPicker: FC<StandardEditorProps<string, any, any>> = ({ val
       defaultOptions={true}
       loadOptions={debouncedSearch}
       onChange={onPicked}
-      placeholder={placeholder ?? 'Select dashboard'}
-      noOptionsMessage="No dashboards found"
+      //placeholder={placeholder ?? 'Select dashboard'}
+      //noOptionsMessage="No dashboards found"
+      placeholder={placeholder ?? '选择仪表面板'}
+      noOptionsMessage="没有发现仪表面板"
       value={current}
     />
   );

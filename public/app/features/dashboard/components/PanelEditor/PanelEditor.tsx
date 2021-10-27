@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import AutoSizer from 'react-virtualized-auto-sizer';
@@ -162,9 +163,11 @@ export class PanelEditorUnconnected extends PureComponent<Props> {
     ) {
       try {
         await saveAndRefreshLibraryPanel(this.props.panel, this.props.dashboard.meta.folderId!);
-        this.props.notifyApp(createPanelLibrarySuccessNotification('Library panel saved'));
+        //this.props.notifyApp(createPanelLibrarySuccessNotification('Library panel saved'));
+        this.props.notifyApp(createPanelLibrarySuccessNotification('库面板已保存'));
       } catch (err) {
-        this.props.notifyApp(createPanelLibraryErrorNotification(`Error saving library panel: "${err.statusText}"`));
+        //this.props.notifyApp(createPanelLibraryErrorNotification(`Error saving library panel: "${err.statusText}"`));
+        this.props.notifyApp(createPanelLibraryErrorNotification(`保存库面板错误: "${err.statusText}"`));
       }
       return;
     }
@@ -306,7 +309,7 @@ export class PanelEditorUnconnected extends PureComponent<Props> {
           {this.renderTemplateVariables(styles)}
           <HorizontalGroup>
             <InlineSwitch
-              label="Table view"
+              label="Table view(表视图)"
               showLabel={true}
               id="table-view"
               value={tableViewEnabled}
@@ -327,34 +330,45 @@ export class PanelEditorUnconnected extends PureComponent<Props> {
       <ToolbarButton
         icon="cog"
         onClick={this.onOpenDashboardSettings}
-        title="Open dashboard settings"
+        //title="Open dashboard settings"
+        title="打开仪表盘设置"
         key="settings"
       />,
-      <ToolbarButton onClick={this.onDiscard} title="Undo all changes" key="discard">
-        Discard
+      <ToolbarButton 
+        onClick={this.onDiscard} 
+        //title="Undo all changes" 
+        title="放弃更改"
+        key="discard">
+        放弃
       </ToolbarButton>,
       this.props.panel.libraryPanel ? (
         <ToolbarButton
           onClick={this.onSaveLibraryPanel}
           variant="primary"
-          title="Apply changes and save library panel"
+          //title="Apply changes and save library panel"
+          title="应用更改并保存到库面板"
           key="save-panel"
         >
-          Save library panel
+          保存库面板
         </ToolbarButton>
       ) : (
-        <ToolbarButton onClick={this.onSaveDashboard} title="Apply changes and save dashboard" key="save">
-          Save
+        <ToolbarButton 
+        onClick={this.onSaveDashboard} 
+        //title="Apply changes and save dashboard" 
+        title="应用更改并保存仪表盘" 
+        key="save">
+          保存
         </ToolbarButton>
       ),
       <ToolbarButton
         onClick={this.onBack}
         variant="primary"
-        title="Apply changes and go back to dashboard"
+        //title="Apply changes and go back to dashboard"
+        title="应用更改并返回到仪表盘"
         key="apply"
         aria-label={selectors.components.PanelEditor.applyButton}
       >
-        Apply
+        应用
       </ToolbarButton>,
     ];
 
@@ -377,7 +391,8 @@ export class PanelEditorUnconnected extends PureComponent<Props> {
                     isOpen: true,
                   });
                 }}
-                title="Disconnects this panel from the library panel so that you can edit it regularly."
+                //title="Disconnects this panel from the library panel so that you can edit it regularly."
+                title="断开此面板与库面板的连接，以便您可以定期编辑它。"
                 key="unlink"
               >
                 Unlink
@@ -437,7 +452,7 @@ export class PanelEditorUnconnected extends PureComponent<Props> {
 
     return (
       <div className={styles.wrapper} aria-label={selectors.components.PanelEditor.General.content}>
-        <PageToolbar title={`${dashboard.title} / Edit Panel`} onGoBack={this.onGoBackToDashboard}>
+        <PageToolbar title={`${dashboard.title} / 编辑面板`} onGoBack={this.onGoBackToDashboard}>
           {this.renderEditorActions()}
         </PageToolbar>
         <div className={styles.verticalSplitPanesWrapper}>

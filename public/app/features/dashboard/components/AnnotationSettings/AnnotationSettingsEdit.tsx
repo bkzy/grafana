@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { Checkbox, CollapsableSection, ColorValueEditor, Field, HorizontalGroup, Input } from '@grafana/ui';
 import { DashboardModel } from '../../state/DashboardModel';
@@ -87,16 +88,25 @@ export const AnnotationSettingsEdit: React.FC<Props> = ({ editIdx, dashboard }) 
           onChange={onDataSourceChange}
         />
       </Field>
-      <Field label="Enabled" description="When enabled the annotation query is issued every dashboard refresh">
+      <Field
+        label = "启用"
+        //description = "When enabled the annotation query is issued every dashboard refresh."
+        description ="启用后，每次仪表板刷新都会发出注释查询。"
+      >
         <Checkbox name="enable" id="enable" value={annotation.enable} onChange={onChange} />
       </Field>
       <Field
-        label="Hidden"
-        description="Annotation queries can be toggled on or off at the top of the dashboard. With this option checked this toggle will be hidden."
+        label="隐藏"
+        //description="Annotation queries can be toggled on or off at the top of the dashboard. With this option checked this toggle will be hidden."
+        description = "可以在仪表板顶部打开或关闭注释查询。选中此选项后，此切换将被隐藏。"
       >
         <Checkbox name="hide" id="hide" value={annotation.hide} onChange={onChange} />
       </Field>
-      <Field label="Color" description="Color to use for the annotation event markers">
+      <Field 
+        label="颜色" 
+        //description="Color to use for the annotation event markers"
+        description = "用于注释事件标记的颜色"
+      >
         <HorizontalGroup>
           <ColorValueEditor value={annotation?.iconColor} onChange={onColorChange} />
         </HorizontalGroup>

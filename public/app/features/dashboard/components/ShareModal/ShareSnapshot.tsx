@@ -10,10 +10,10 @@ import { VariableRefresh } from '../../../variables/types';
 const snapshotApiUrl = '/api/snapshots';
 
 const expireOptions: Array<SelectableValue<number>> = [
-  { label: 'Never', value: 0 },
-  { label: '1 Hour', value: 60 * 60 },
-  { label: '1 Day', value: 60 * 60 * 24 },
-  { label: '7 Days', value: 60 * 60 * 24 * 7 },
+  { label: 'Never(从不)', value: 0 },
+  { label: '1 Hour(1小时)', value: 60 * 60 },
+  { label: '1 Day(1天)', value: 60 * 60 * 24 },
+  { label: '7 Days(7天)', value: 60 * 60 * 24 * 7 },
 ];
 
 interface Props {
@@ -213,19 +213,17 @@ export class ShareSnapshot extends PureComponent<Props, State> {
       <>
         <div>
           <p className="share-modal-info-text">
-            A snapshot is an instant way to share an interactive dashboard publicly. When created, we strip sensitive
-            data like queries (metric, template, and annotation) and panel links, leaving only the visible metric data
-            and series names embedded in your dashboard.
+            快照是公开共享交互式仪表板的即时方式。创建时，我们剥离敏感数据，如查询（度量、模板和注释）和面板链接，
+            只留下嵌入仪表板中的可见度量数据和系列名称。
           </p>
           <p className="share-modal-info-text">
-            Keep in mind, your snapshot <em>can be viewed by anyone</em> that has the link and can access the URL. Share
-            wisely.
+            请注意, <em>任何</em>拥有连接并可以访问URL的人都可以查看您的快照，请慎重分享您的快照。
           </p>
         </div>
-        <Field label="Snapshot name">
+        <Field label="Snapshot name(快照名)">
           <Input width={30} value={snapshotName} onChange={this.onSnapshotNameChange} />
         </Field>
-        <Field label="Expire">
+        <Field label="Expire(过期)">
           <Select
             menuShouldPortal
             width={30}
@@ -235,9 +233,10 @@ export class ShareSnapshot extends PureComponent<Props, State> {
           />
         </Field>
         <Field
-          label="Timeout (seconds)"
-          description="You might need to configure the timeout value if it takes a long time to collect your dashboard
-            metrics."
+          label="Timeout (seconds)（超时时间）"
+          //description="You might need to configure the timeout value if it takes a long time to collect your dashboard
+          //  metrics."
+          description="如果收集仪表板指标需要很长时间，则可能需要配置超时值。"
         >
           <Input type="number" width={21} value={timeoutSeconds} onChange={this.onTimeoutChange} />
         </Field>

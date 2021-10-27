@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { FC } from 'react';
 import { Form, Field, Input, Button, HorizontalGroup, LinkButton, FormAPI } from '@grafana/ui';
 import { getConfig } from 'app/core/config';
@@ -63,17 +64,22 @@ export const SignupPage: FC<Props> = (props) => {
         <Form defaultValues={defaultValues} onSubmit={onSubmit}>
           {({ errors, register, getValues }: FormAPI<SignupDTO>) => (
             <>
-              <Field label="Your name">
+              <Field 
+                //label="Your name"
+                label = "您的名字"
+              >
                 <Input id="user-name" {...register('name')} placeholder="(optional)" />
               </Field>
               <Field label="Email" invalid={!!errors.email} error={errors.email?.message}>
                 <Input
                   id="email"
                   {...register('email', {
-                    required: 'Email is required',
+                    //required: 'Email is required',
+                    required: 'Email 是必填项',
                     pattern: {
                       value: /^\S+@\S+$/,
-                      message: 'Email is invalid',
+                      //message: 'Email is invalid',
+                      message: 'Email 无效',
                     },
                   })}
                   type="email"
@@ -81,30 +87,47 @@ export const SignupPage: FC<Props> = (props) => {
                 />
               </Field>
               {!getConfig().autoAssignOrg && (
-                <Field label="Org. name">
+                <Field 
+                  //label="Org. name"
+                  label="组织名称"
+                >
                   <Input id="org-name" {...register('orgName')} placeholder="Org. name" />
                 </Field>
               )}
               {getConfig().verifyEmailEnabled && (
-                <Field label="Email verification code (sent to your email)">
+                <Field 
+                  //label="Email verification code (sent to your email)"
+                  label="Email 验证码 (已发送到您的Email)"
+                >
                   <Input id="verification-code" {...register('code')} placeholder="Code" />
                 </Field>
               )}
-              <Field label="Password" invalid={!!errors.password} error={errors?.password?.message}>
+              <Field 
+                //label="Password" 
+                label="密码" 
+                invalid={!!errors.password} error={errors?.password?.message}
+              >
                 <PasswordField
                   id="new-password"
                   autoFocus
                   autoComplete="new-password"
-                  {...register('password', { required: 'Password is required' })}
+                  //{...register('password', { required: 'Password is required' })}
+                  {...register('password', { required: '密码是必须的' })}
                 />
               </Field>
-              <Field label="Confirm password" invalid={!!errors.confirm} error={errors?.confirm?.message}>
+              <Field 
+                //label="Confirm password" 
+                label="确认密码" 
+                invalid={!!errors.confirm} error={errors?.confirm?.message}
+              >
                 <PasswordField
                   id="confirm-new-password"
                   autoComplete="new-password"
                   {...register('confirm', {
-                    required: 'Confirmed password is required',
-                    validate: (v) => v === getValues().password || 'Passwords must match!',
+                    //required: 'Confirmed password is required',
+                    required: '确认密码是必填的',
+                    //validate: (v) => v === getValues().password || 'Passwords must match!',
+                    validate: (v) => v === getValues().password || '密码不匹配!',
                   })}
                 />
               </Field>
@@ -112,7 +135,7 @@ export const SignupPage: FC<Props> = (props) => {
               <HorizontalGroup>
                 <Button type="submit">Submit</Button>
                 <LinkButton fill="text" href={getConfig().appSubUrl + '/login'}>
-                  Back to login
+                  返回登录页面
                 </LinkButton>
               </HorizontalGroup>
             </>

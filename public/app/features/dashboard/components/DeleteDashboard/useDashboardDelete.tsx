@@ -11,7 +11,8 @@ export const useDashboardDelete = (uid: string) => {
   useEffect(() => {
     if (state.value) {
       locationService.replace('/');
-      appEvents.emit(AppEvents.alertSuccess, ['Dashboard Deleted', state.value.title + ' has been deleted']);
+      //appEvents.emit(AppEvents.alertSuccess, ['Dashboard Deleted', state.value.title + ' has been deleted']);
+      appEvents.emit(AppEvents.alertSuccess, ['删除仪表盘', state.value.title + ' 已经被删除']);
     }
   }, [state]);
 

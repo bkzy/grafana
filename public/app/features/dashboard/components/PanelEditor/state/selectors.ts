@@ -21,14 +21,14 @@ export const getPanelEditorTabs = memoizeOne((tab?: string, plugin?: PanelPlugin
 
     tabs.push({
       id: PanelEditorTabId.Query,
-      text: 'Query',
+      text: 'Query(查询)',
       icon: 'database',
       active: false,
     });
 
     tabs.push({
       id: PanelEditorTabId.Transform,
-      text: 'Transform',
+      text: 'Transform(转换)',
       icon: 'process',
       active: false,
     });
@@ -37,7 +37,7 @@ export const getPanelEditorTabs = memoizeOne((tab?: string, plugin?: PanelPlugin
   if ((getConfig().alertingEnabled && plugin.meta.id === 'graph') || plugin.meta.id === 'timeseries') {
     tabs.push({
       id: PanelEditorTabId.Alert,
-      text: 'Alert',
+      text: 'Alert(报警)',
       icon: 'bell',
       active: false,
     });

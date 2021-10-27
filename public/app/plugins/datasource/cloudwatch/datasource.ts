@@ -43,7 +43,6 @@ import {
   LogAction,
   MetricQuery,
   MetricRequest,
-  StartQueryRequest,
   TSDBResponse,
 } from './types';
 import { CloudWatchLanguageProvider } from './language_provider';
@@ -161,7 +160,6 @@ export class CloudWatchDatasource extends DataSourceWithBackend<CloudWatchQuery,
 
     // This first starts the query which returns queryId which can be used to retrieve results.
     return this.makeLogActionRequest('StartQuery', queryParams, {
-      makeReplacements: true,
       scopedVars: options.scopedVars,
       skipCache: true,
     }).pipe(
@@ -517,7 +515,7 @@ export class CloudWatchDatasource extends DataSourceWithBackend<CloudWatchQuery,
 
   makeLogActionRequest(
     subtype: LogAction,
-    queryParams: Array<GetLogEventsRequest | StartQueryRequest | DescribeLogGroupsRequest | GetLogGroupFieldsRequest>,
+    queryParams: any[],
     options: {
       scopedVars?: ScopedVars;
       makeReplacements?: boolean;
@@ -545,23 +543,18 @@ export class CloudWatchDatasource extends DataSourceWithBackend<CloudWatchQuery,
 
     if (options.makeReplacements) {
       requestParams.queries.forEach((query) => {
-        const fieldsToReplace: Array<
-          keyof (GetLogEventsRequest & StartQueryRequest & DescribeLogGroupsRequest & GetLogGroupFieldsRequest)
-        > = ['queryString', 'logGroupNames', 'logGroupName', 'logGroupNamePrefix'];
-
-        for (const fieldName of fieldsToReplace) {
-          if (query.hasOwnProperty(fieldName)) {
-            if (Array.isArray(query[fieldName])) {
-              query[fieldName] = query[fieldName].map((val: string) =>
-                this.replace(val, options.scopedVars, true, fieldName)
-              );
-            } else {
-              query[fieldName] = this.replace(query[fieldName], options.scopedVars, true, fieldName);
-            }
-          }
+        if (query.hasOwnProperty('queryString')) {
+          query.queryString = this.replace(query.queryString, options.scopedVars, true);
         }
         query.region = this.replace(query.region, options.scopedVars, true, 'region');
         query.region = this.getActualRegion(query.region);
+
+        // interpolate log groups
+        if (query.logGroupNames) {
+          query.logGroupNames = query.logGroupNames.map((logGroup: string) =>
+            this.replace(logGroup, options.scopedVars, true, 'log groups')
+          );
+        }
       });
     }
 

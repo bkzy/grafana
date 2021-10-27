@@ -134,24 +134,24 @@ export class ShareExport extends PureComponent<Props, State> {
 
     return (
       <>
-        <p className="share-modal-info-text">Export this dashboard.</p>
-        <Field label="Export for sharing externally">
+        <p className="share-modal-info-text">Export this dashboard(导出此面板).</p>
+        <Field label="Export for sharing externally(导出以供外部共享)">
           <Switch value={shareExternally} onChange={this.onShareExternallyChange} />
         </Field>
         {config.featureToggles.trimDefaults && (
-          <Field label="Export with default values removed">
+          <Field label="Export with default values removed(删除默认值后导出)">
             <Switch value={trimDefaults} onChange={this.onTrimDefaultsChange} />
           </Field>
         )}
         <Modal.ButtonRow>
           <Button variant="secondary" onClick={onDismiss} fill="outline">
-            Cancel
+            取消
           </Button>
           <Button variant="secondary" onClick={this.onViewJson}>
-            View JSON
+            查看 JSON
           </Button>
           <Button variant="primary" onClick={this.onSaveAsFile}>
-            Save to file
+            保存到文件
           </Button>
         </Modal.ButtonRow>
       </>

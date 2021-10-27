@@ -66,7 +66,8 @@ export class FolderPickerCtrl {
         }
 
         if (this.isEditor && this.enableCreateNew && query === '') {
-          result.unshift({ title: '-- New folder --', id: -1 });
+          //result.unshift({ title: '-- New folder --', id: -1 });
+          result.unshift({ title: '-- 新文件夹 --', id: -1 });
         }
 
         if (this.enableReset && query === '' && this.initialTitle !== '') {
@@ -113,8 +114,8 @@ export class FolderPickerCtrl {
 
     return promiseToDigest(this.$scope)(
       createFolder({ title: this.newFolderName }).then((result: { title: string; id: number }) => {
-        appEvents.emit(AppEvents.alertSuccess, ['Folder created', 'OK']);
-
+        //appEvents.emit(AppEvents.alertSuccess, ['Folder created', 'OK']);
+        appEvents.emit(AppEvents.alertSuccess, ['创建文件夹', 'OK']);
         this.closeCreateFolder();
         this.folder = { text: result.title, value: result.id };
         this.onFolderChange(this.folder);

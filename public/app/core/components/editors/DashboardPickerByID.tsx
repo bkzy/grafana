@@ -31,7 +31,8 @@ const getDashboards = (query = '') => {
       id: item.id,
       uid: item.uid,
       value: item.id,
-      label: `${item?.folderTitle ?? 'General'}/${item.title}`,
+      //label: `${item?.folderTitle ?? 'General'}/${item.title}`,
+      label: `${item?.folderTitle ?? '全部'}/${item.title}`,
     }));
   });
 };
@@ -59,8 +60,10 @@ export const DashboardPickerByID: FC<Props> = ({
       defaultOptions={true}
       loadOptions={debouncedSearch}
       onChange={onChange}
-      placeholder="Select dashboard"
-      noOptionsMessage="No dashboards found"
+      //placeholder="Select dashboard"
+      //noOptionsMessage="No dashboards found"
+      placeholder="选择仪表面板"
+      noOptionsMessage="没有发现仪表面板"
       value={value}
       invalid={invalid}
       disabled={disabled}

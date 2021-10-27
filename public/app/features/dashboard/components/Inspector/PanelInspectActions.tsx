@@ -67,7 +67,8 @@ export const InspectActionsTab: React.FC<InspectActionsTabProps> = ({ panel, dat
 
   const actions = supplier.getActions(panel);
   if (!actions?.length) {
-    return <div>No actions avaliable</div>;
+    //return <div>No actions avaliable</div>;
+    return <div>没有可用的操作</div>;
   }
 
   return (

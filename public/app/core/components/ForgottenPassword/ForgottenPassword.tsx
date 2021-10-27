@@ -32,10 +32,10 @@ export const ForgottenPassword: FC = () => {
   if (emailSent) {
     return (
       <div>
-        <p>An email with a reset link has been sent to the email address. You should receive it shortly.</p>
+        <p>带有重置链接的电子邮件已发送到该电子邮件地址。你很快就会收到的.</p>
         <Container margin="md" />
         <LinkButton variant="primary" href={loginHref}>
-          Back to login
+          返回登录
         </LinkButton>
       </div>
     );
@@ -44,27 +44,29 @@ export const ForgottenPassword: FC = () => {
     <Form onSubmit={sendEmail}>
       {({ register, errors }) => (
         <>
-          <Legend>Reset password</Legend>
+          <Legend>重置密码</Legend>
           <Field
-            label="User"
-            description="Enter your information to get a reset link sent to you"
+            //label="User"
+            //description="Enter your information to get a reset link sent to you"
+            label="用户"
+            description="输入您的信息以获得发送给您的重置链接"
             invalid={!!errors.userOrEmail}
             error={errors?.userOrEmail?.message}
           >
             <Input
               id="user-input"
               placeholder="Email or username"
-              {...register('userOrEmail', { required: 'Email or username is required' })}
+              {...register('userOrEmail', { required: 'Email 或用户名是必填项' })}
             />
           </Field>
           <HorizontalGroup>
-            <Button>Send reset email</Button>
+            <Button>发送重置Email</Button>
             <LinkButton fill="text" href={loginHref}>
-              Back to login
+              返回登录
             </LinkButton>
           </HorizontalGroup>
 
-          <p className={styles}>Did you forget your username or email? Contact your Grafana administrator.</p>
+          <p className={styles}>忘记了你的用户名或者Email? 请联系你的管理员。</p>
         </>
       )}
     </Form>

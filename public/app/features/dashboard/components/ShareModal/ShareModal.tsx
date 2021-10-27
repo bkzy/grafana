@@ -32,21 +32,21 @@ function getInitialState(props: Props): State {
 function getTabs(props: Props) {
   const { panel } = props;
 
-  const tabs: ShareModalTabModel[] = [{ label: 'Link', value: 'link', component: ShareLink }];
+  const tabs: ShareModalTabModel[] = [{ label: 'Link(链接)', value: 'link', component: ShareLink }];
 
   if (contextSrv.isSignedIn) {
-    tabs.push({ label: 'Snapshot', value: 'snapshot', component: ShareSnapshot });
+    tabs.push({ label: 'Snapshot(快照)', value: 'snapshot', component: ShareSnapshot });
   }
 
   if (panel) {
-    tabs.push({ label: 'Embed', value: 'embed', component: ShareEmbed });
+    tabs.push({ label: 'Embed(嵌入式)', value: 'embed', component: ShareEmbed });
 
     if (!isPanelModelLibraryPanel(panel)) {
-      tabs.push({ label: 'Library panel', value: 'library_panel', component: ShareLibraryPanel });
+      tabs.push({ label: 'Library panel(库面板)', value: 'library_panel', component: ShareLibraryPanel });
     }
     tabs.push(...customPanelTabs);
   } else {
-    tabs.push({ label: 'Export', value: 'export', component: ShareExport });
+    tabs.push({ label: 'Export(导出)', value: 'export', component: ShareExport });
     tabs.push(...customDashboardTabs);
   }
 
@@ -92,7 +92,7 @@ export class ShareModal extends React.Component<Props, State> {
   renderTitle() {
     const { panel } = this.props;
     const { activeTab } = this.state;
-    const title = panel ? 'Share Panel' : 'Share';
+    const title = panel ? 'Share Panel(分享面板)' : 'Share(分享)';
     const tabs = this.getTabs();
 
     return (

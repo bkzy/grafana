@@ -8,8 +8,10 @@ import { StandardEditorsRegistryItem } from '@grafana/data';
 export const getAllOptionEditors = () => {
   const dashboardPicker: StandardEditorsRegistryItem<string, DashboardPickerOptions> = {
     id: 'dashboard-uid',
-    name: 'Dashboard',
-    description: 'Select dashboard',
+    //name: 'Dashboard',
+    //description: 'Select dashboard',
+    name: '仪表面板',
+    description: '选择仪表面板',
     editor: DashboardPicker as any,
   };
   return [...getStandardOptionEditors(), dashboardPicker];

@@ -39,7 +39,8 @@ export const PanelTypeCard: React.FC<Props> = ({
       className={cssClass}
       aria-label={selectors.components.PluginVisualization.item(plugin.name)}
       onClick={disabled ? undefined : onClick}
-      title={isCurrent ? 'Click again to close this section' : plugin.name}
+      //title={isCurrent ? 'Click again to close this section' : plugin.name}
+      title={isCurrent ? '再次点击以关闭' : plugin.name}
     >
       <img className={styles.img} src={plugin.info.logos.small} alt={`${plugin.name} logo`} />
 
@@ -60,7 +61,8 @@ export const PanelTypeCard: React.FC<Props> = ({
             e.stopPropagation();
             onDelete();
           }}
-          aria-label="Delete button on panel type card"
+          //aria-label="Delete button on panel type card"
+          aria-label="面板类型卡上的删除按钮"
         />
       )}
     </div>

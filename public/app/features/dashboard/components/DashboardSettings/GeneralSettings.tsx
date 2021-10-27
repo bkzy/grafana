@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { TimeZone } from '@grafana/data';
@@ -17,9 +18,9 @@ interface OwnProps {
 export type Props = OwnProps & ConnectedProps<typeof connector>;
 
 const GRAPH_TOOLTIP_OPTIONS = [
-  { value: 0, label: 'Default' },
-  { value: 1, label: 'Shared crosshair' },
-  { value: 2, label: 'Shared Tooltip' },
+  { value: 0, label: '默认' }, //'Default' },
+  { value: 1, label: '共享十字线' }, //'Shared crosshair' },
+  { value: 2, label: '共享提示' }, //'Shared Tooltip' },
 ];
 
 export function GeneralSettingsUnconnected({ dashboard, updateTimeZone }: Props): JSX.Element {
@@ -75,26 +76,28 @@ export function GeneralSettingsUnconnected({ dashboard, updateTimeZone }: Props)
   };
 
   const editableOptions = [
-    { label: 'Editable', value: true },
-    { label: 'Read-only', value: false },
+    //{ label: 'Editable', value: true },
+    //{ label: 'Read-only', value: false },
+    { label: '可编辑', value: true },
+    { label: '只读', value: false },
   ];
 
   return (
     <div style={{ maxWidth: '600px' }}>
       <h3 className="dashboard-settings__header" aria-label={selectors.pages.Dashboard.Settings.General.title}>
-        General
+        常规
       </h3>
       <div className="gf-form-group">
-        <Field label="Name">
+        <Field label="名称">
           <Input name="title" onBlur={onBlur} defaultValue={dashboard.title} />
         </Field>
-        <Field label="Description">
+        <Field label="描述信息">
           <Input name="description" onBlur={onBlur} defaultValue={dashboard.description} />
         </Field>
-        <Field label="Tags">
+        <Field label="标签">
           <TagsInput tags={dashboard.tags} onChange={onTagsChange} />
         </Field>
-        <Field label="Folder">
+        <Field label="文件夹">
           <FolderPicker
             initialTitle={dashboard.meta.folderTitle}
             initialFolderId={dashboard.meta.folderId}
@@ -106,8 +109,10 @@ export function GeneralSettingsUnconnected({ dashboard, updateTimeZone }: Props)
         </Field>
 
         <Field
-          label="Editable"
-          description="Set to read-only to disable all editing. Reload the dashboard for changes to take effect"
+          //label="Editable"
+          //description="Set to read-only to disable all editing. Reload the dashboard for changes to take effect"
+          label="是否可编辑"
+          description="设置为只读以禁用所有编辑。重新加载仪表板以使更改生效。"
         >
           <RadioButtonGroup value={dashboard.editable} options={editableOptions} onChange={onEditableChange} />
         </Field>
@@ -126,10 +131,15 @@ export function GeneralSettingsUnconnected({ dashboard, updateTimeZone }: Props)
         liveNow={dashboard.liveNow}
       />
 
-      <CollapsableSection label="Panel options" isOpen={true}>
+      <CollapsableSection 
+        //label="Panel options" 
+        label="面板选项" 
+      isOpen={true}>
         <Field
-          label="Graph tooltip"
-          description="Controls tooltip and hover highlight behavior across different panels"
+          //label="Graph tooltip"
+          //description="Controls tooltip and hover highlight behavior across different panels"
+          label="图形提示"
+          description="控制不同面板上的提示工具和悬停高亮显示行为"
         >
           <RadioButtonGroup onChange={onTooltipChange} options={GRAPH_TOOLTIP_OPTIONS} value={dashboard.graphTooltip} />
         </Field>

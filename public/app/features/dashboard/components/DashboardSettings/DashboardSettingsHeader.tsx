@@ -17,7 +17,7 @@ export const DashboardSettingsHeader: React.FC<Props> = ({ onGoBack, isEditing, 
           </span>
           {isEditing && (
             <span>
-              <Icon name="angle-right" /> Edit
+              <Icon name="angle-right" /> 编辑
             </span>
           )}
         </h3>

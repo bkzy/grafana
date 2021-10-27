@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { DataFrame, FieldConfigSource, PanelData, PanelPlugin } from '@grafana/data';
 import { DashboardModel, PanelModel } from '../../state';
 
@@ -27,15 +28,25 @@ export enum PanelEditTableToggle {
 }
 
 export const displayModes = [
-  { value: DisplayMode.Fill, label: 'Fill', description: 'Use all available space' },
-  { value: DisplayMode.Exact, label: 'Actual', description: 'Make same size as on the dashboard' },
+  { value: 
+    DisplayMode.Fill, 
+    label: 'Fill(充满)',
+    //description: 'Use all available space' 
+    description: '使用所有可用空间'
+  },
+  { value: DisplayMode.Exact, 
+    label: 'Actual(实际)', 
+    //description: 'Make same size as on the dashboard' 
+    description: '与仪表盘上的尺寸相同'
+  },
 ];
 
 export const panelEditTableModes = [
   {
     value: PanelEditTableToggle.Off,
-    label: 'Visualization',
-    description: 'Show using selected visualization',
+    label: 'Visualization(具体化)',
+    //description: 'Show using selected visualization',
+    description: '使用选定的可视化显示',
   },
   { value: PanelEditTableToggle.Table, label: 'Table', description: 'Show raw data in table form' },
 ];

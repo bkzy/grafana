@@ -35,13 +35,13 @@ export const SaveDashboardErrorProxy: React.FC<SaveDashboardErrorProxyProps> = (
       {error.data && error.data.status === 'version-mismatch' && (
         <ConfirmModal
           isOpen={true}
-          title="Conflict"
+          title="Conflict(冲突)"
           body={
             <div>
               Someone else has updated this dashboard <br /> <small>Would you still like to save this dashboard?</small>
             </div>
           }
-          confirmText="Save and overwrite"
+          confirmText="Save and overwrite(覆盖)"
           onConfirm={async () => {
             await onDashboardSave(dashboardSaveModel, { overwrite: true }, dashboard);
             onDismiss();
@@ -52,14 +52,14 @@ export const SaveDashboardErrorProxy: React.FC<SaveDashboardErrorProxyProps> = (
       {error.data && error.data.status === 'name-exists' && (
         <ConfirmModal
           isOpen={true}
-          title="Conflict"
+          title="Conflict(冲突)"
           body={
             <div>
               A dashboard with the same name in selected folder already exists. <br />
               <small>Would you still like to save this dashboard?</small>
             </div>
           }
-          confirmText="Save and overwrite"
+          confirmText="Save and overwrite(覆盖)"
           onConfirm={async () => {
             await onDashboardSave(dashboardSaveModel, { overwrite: true }, dashboard);
             onDismiss();
@@ -80,7 +80,7 @@ const ConfirmPluginDashboardSaveModal: React.FC<SaveDashboardModalProps> = ({ on
   const styles = getConfirmPluginDashboardSaveModalStyles(theme);
 
   return (
-    <Modal className={styles.modal} title="Plugin dashboard" icon="copy" isOpen={true} onDismiss={onDismiss}>
+    <Modal className={styles.modal} title="Plugin dashboard(插件)" icon="copy" isOpen={true} onDismiss={onDismiss}>
       <div className={styles.modalText}>
         Your changes will be lost when you update the plugin.
         <br />

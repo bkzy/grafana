@@ -84,10 +84,13 @@ export const AnnotationSettingsList: React.FC<Props> = ({ dashboard, onNew, onEd
       {showEmptyListCTA && (
         <EmptyListCTA
           onClick={onNew}
-          title="There are no custom annotation queries added yet"
+          //title="There are no custom annotation queries added yet"
+          title="尚未添加自定义注释查询"
           buttonIcon="comment-alt"
           buttonTitle="Add annotation query"
-          infoBoxTitle="What are annotation queries?"
+          //infoBoxTitle="What are annotation queries?"
+          infoBoxTitle="什么是注释查询?"
+          /*
           infoBox={{
             __html: `<p>Annotations provide a way to integrate event data into your graphs. They are visualized as vertical lines
           and icons on all graph panels. When you hover over an annotation icon you can get event text &amp; tags for
@@ -99,6 +102,18 @@ export const AnnotationSettingsList: React.FC<Props> = ({ dashboard, onNew, onEd
           >Annotations documentation</a
         >
         for more information.`,
+          }}
+          */
+          infoBox={{
+            __html: `<p>注释提供了一种将事件数据集成到图形中的方法。它们在所有图形面板上显示为垂直线和图标。
+            当您将鼠标悬停在注释图标上时，可以获得事件文本 &amp; 事件的标记。
+            您可以通过按住CTRL或CMD并单击图形（或拖动区域），直接从grafana添加注释事件。
+            这些将存储在Grafana的注释数据库中.
+        </p>
+        更多信息请查看
+        <a class='external-link' target='_blank' href='http://docs.grafana.org/reference/annotations/'
+          >注释文档</a
+        >`,
           }}
         />
       )}

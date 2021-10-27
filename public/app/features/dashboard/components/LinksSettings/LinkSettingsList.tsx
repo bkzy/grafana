@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { DeleteButton, HorizontalGroup, Icon, IconButton, TagList } from '@grafana/ui';
 import EmptyListCTA from 'app/core/components/EmptyListCTA/EmptyListCTA';
@@ -35,13 +36,13 @@ export const LinkSettingsList: React.FC<LinkSettingsListProps> = ({ dashboard, o
     return (
       <EmptyListCTA
         onClick={onNew}
-        title="There are no dashboard links added yet"
+        title="尚未添加仪表盘连接"
         buttonIcon="link"
-        buttonTitle="Add dashboard link"
-        infoBoxTitle="What are dashboard links?"
+        buttonTitle="添加仪表盘连接"
+        infoBoxTitle="什么是仪表盘连接?"
         infoBox={{
           __html:
-            '<p>Dashboard Links allow you to place links to other dashboards and web sites directly below the dashboard header.</p>',
+            '<p>仪表盘链接允许您将指向其他仪表盘和网站的链接直接放置在仪表板标题下方。</p>',
         }}
       />
     );
@@ -100,7 +101,7 @@ export const LinkSettingsList: React.FC<LinkSettingsListProps> = ({ dashboard, o
           ))}
         </tbody>
       </table>
-      <ListNewButton onClick={onNew}>New link</ListNewButton>
+      <ListNewButton onClick={onNew}>新链接</ListNewButton>
     </>
   );
 };

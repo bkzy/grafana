@@ -26,7 +26,8 @@ export const useDashboardRestore = (version: number) => {
         pathname: newUrl,
         state: { routeReloadCounter: prevState ? prevState + 1 : 1 },
       });
-      appEvents.emit(AppEvents.alertSuccess, ['Dashboard restored', 'Restored from version ' + version]);
+      //appEvents.emit(AppEvents.alertSuccess, ['Dashboard restored', 'Restored from version ' + version]);
+      appEvents.emit(AppEvents.alertSuccess, ['仪表盘还原', '从版本' + version + '还原']);
     }
   }, [state, version]);
   return { state, onRestoreDashboard };

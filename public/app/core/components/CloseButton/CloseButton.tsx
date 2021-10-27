@@ -10,7 +10,8 @@ type Props = {
 
 export const CloseButton: React.FC<Props> = ({ onClick, 'aria-label': ariaLabel }) => {
   const styles = useStyles2(getStyles);
-  return <IconButton aria-label={ariaLabel ?? 'Close'} className={styles} name="times" onClick={onClick} />;
+  //return <IconButton aria-label={ariaLabel ?? 'Close'} className={styles} name="times" onClick={onClick} />;
+  return <IconButton aria-label={ariaLabel ?? '关闭'} className={styles} name="times" onClick={onClick} />;
 };
 
 const getStyles = (theme: GrafanaTheme2) =>

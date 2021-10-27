@@ -116,7 +116,8 @@ class DashNav extends PureComponent<Props> {
     }
 
     if (canStar) {
-      let desc = isStarred ? 'Unmark as favorite' : 'Mark as favorite';
+      //let desc = isStarred ? 'Unmark as favorite' : 'Mark as favorite';
+      let desc = isStarred ? '取消收藏' : '收藏';
       buttons.push(
         <DashNavButton
           tooltip={desc}
@@ -130,7 +131,8 @@ class DashNav extends PureComponent<Props> {
     }
 
     if (canShare) {
-      let desc = 'Share dashboard or panel';
+      //let desc = 'Share dashboard or panel';
+      let desc = '共享仪表盘(dashboard)或者面板(panel)';
       buttons.push(
         <ModalsController key="button-share">
           {({ showModal, hideModal }) => (
@@ -156,10 +158,17 @@ class DashNav extends PureComponent<Props> {
 
   renderPlaylistControls() {
     return (
+      /*
       <ButtonGroup key="playlist-buttons">
         <ToolbarButton tooltip="Go to previous dashboard" icon="backward" onClick={this.onPlaylistPrev} narrow />
         <ToolbarButton onClick={this.onPlaylistStop}>Stop playlist</ToolbarButton>
         <ToolbarButton tooltip="Go to next dashboard" icon="forward" onClick={this.onPlaylistNext} narrow />
+      </ButtonGroup>
+      */
+      <ButtonGroup key="playlist-buttons">
+        <ToolbarButton tooltip="上一个仪表盘" icon="backward" onClick={this.onPlaylistPrev} narrow />
+        <ToolbarButton onClick={this.onPlaylistStop}>Stop playlist</ToolbarButton>
+        <ToolbarButton tooltip="下一个仪表盘" icon="forward" onClick={this.onPlaylistNext} narrow />
       </ButtonGroup>
     );
   }
@@ -183,7 +192,8 @@ class DashNav extends PureComponent<Props> {
     const snapshotUrl = snapshot && snapshot.originalUrl;
     const buttons: ReactNode[] = [];
     const tvButton = (
-      <ToolbarButton tooltip="Cycle view mode" icon="monitor" onClick={this.onToggleTVMode} key="tv-button" />
+      //<ToolbarButton tooltip="Cycle view mode" icon="monitor" onClick={this.onToggleTVMode} key="tv-button" />
+      <ToolbarButton tooltip="循环模式" icon="monitor" onClick={this.onToggleTVMode} key="tv-button" />
     );
 
     if (this.isPlaylistRunning()) {
@@ -195,12 +205,14 @@ class DashNav extends PureComponent<Props> {
     }
 
     if (canEdit && !isFullscreen) {
-      buttons.push(<ToolbarButton tooltip="Add panel" icon="panel-add" onClick={onAddPanel} key="button-panel-add" />);
+      //buttons.push(<ToolbarButton tooltip="Add panel" icon="panel-add" onClick={onAddPanel} key="button-panel-add" />);
+      buttons.push(<ToolbarButton tooltip="添加面板" icon="panel-add" onClick={onAddPanel} key="button-panel-add" />);
       buttons.push(
         <ModalsController key="button-save">
           {({ showModal, hideModal }) => (
             <ToolbarButton
-              tooltip="Save dashboard"
+              //tooltip="Save dashboard"
+              tooltip="保存仪表盘"
               icon="save"
               onClick={() => {
                 showModal(SaveDashboardModalProxy, {
@@ -217,7 +229,8 @@ class DashNav extends PureComponent<Props> {
     if (snapshotUrl) {
       buttons.push(
         <ToolbarButton
-          tooltip="Open original dashboard"
+          //tooltip="Open original dashboard"
+          tooltip="打开原始仪表盘"
           onClick={() => this.gotoSnapshotOrigin(snapshotUrl)}
           icon="link"
           key="button-snapshot"
@@ -227,7 +240,8 @@ class DashNav extends PureComponent<Props> {
 
     if (showSettings) {
       buttons.push(
-        <ToolbarButton tooltip="Dashboard settings" icon="cog" onClick={this.onOpenSettings} key="button-settings" />
+        //<ToolbarButton tooltip="Dashboard settings" icon="cog" onClick={this.onOpenSettings} key="button-settings" />
+        <ToolbarButton tooltip="设置仪表盘" icon="cog" onClick={this.onOpenSettings} key="button-settings" />
       );
     }
 

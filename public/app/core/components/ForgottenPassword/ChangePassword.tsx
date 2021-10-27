@@ -21,20 +21,20 @@ export const ChangePassword: FC<Props> = ({ onSubmit, onSkip }) => {
     <Form onSubmit={submit}>
       {({ errors, register, getValues }) => (
         <>
-          <Field label="New password" invalid={!!errors.newPassword} error={errors?.newPassword?.message}>
+          <Field label="新密码" invalid={!!errors.newPassword} error={errors?.newPassword?.message}>
             <PasswordField
               id="new-password"
               autoFocus
               autoComplete="new-password"
-              {...register('newPassword', { required: 'New Password is required' })}
+              {...register('newPassword', { required: '新密码是必填项' })}
             />
           </Field>
-          <Field label="Confirm new password" invalid={!!errors.confirmNew} error={errors?.confirmNew?.message}>
+          <Field label="确认新密码" invalid={!!errors.confirmNew} error={errors?.confirmNew?.message}>
             <PasswordField
               id="confirm-new-password"
               autoComplete="new-password"
               {...register('confirmNew', {
-                required: 'Confirmed Password is required',
+                required: '必须确认新密码',
                 validate: (v: string) => v === getValues().newPassword || 'Passwords must match!',
               })}
             />
@@ -46,7 +46,8 @@ export const ChangePassword: FC<Props> = ({ onSubmit, onSkip }) => {
 
             {onSkip && (
               <Tooltip
-                content="If you skip you will be prompted to change password next time you log in."
+                //content="If you skip you will be prompted to change password next time you log in."
+                content="如果您跳过，下次登录时将提示您更改密码。"
                 placement="bottom"
               >
                 <Button fill="text" onClick={onSkip} type="button" aria-label={selectors.pages.Login.skip}>

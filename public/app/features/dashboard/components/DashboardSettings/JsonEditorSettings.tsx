@@ -27,10 +27,9 @@ export const JsonEditorSettings: React.FC<Props> = ({ dashboard }) => {
 
   return (
     <div>
-      <h3 className="dashboard-settings__header">JSON Model</h3>
+      <h3 className="dashboard-settings__header">JSON 模式</h3>
       <div className="dashboard-settings__subheader">
-        The JSON model below is the data structure that defines the dashboard. This includes dashboard settings, panel
-        settings, layout, queries, and so on.
+        下面的JSON模型是定义仪表板的数据结构。这包括仪表板设置、面板设置、布局、查询等。
       </div>
 
       <div className={styles.editWrapper}>
@@ -50,7 +49,7 @@ export const JsonEditorSettings: React.FC<Props> = ({ dashboard }) => {
       </div>
       {dashboard.meta.canSave && (
         <HorizontalGroup>
-          <Button onClick={onClick}>Save changes</Button>
+          <Button onClick={onClick}>保存改变</Button>
         </HorizontalGroup>
       )}
     </div>

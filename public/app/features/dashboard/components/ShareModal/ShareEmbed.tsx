@@ -6,9 +6,9 @@ import { appEvents } from 'app/core/core';
 import { buildIframeHtml } from './utils';
 
 const themeOptions: Array<SelectableValue<string>> = [
-  { label: 'Current', value: 'current' },
-  { label: 'Dark', value: 'dark' },
-  { label: 'Light', value: 'light' },
+  { label: 'Current(当前)', value: 'current' },
+  { label: 'Dark(暗色)', value: 'dark' },
+  { label: 'Light(亮色)', value: 'light' },
 ];
 
 interface Props {
@@ -62,7 +62,7 @@ export class ShareEmbed extends PureComponent<Props, State> {
   };
 
   onIframeHtmlCopy = () => {
-    appEvents.emit(AppEvents.alertSuccess, ['Content copied to clipboard']);
+    appEvents.emit(AppEvents.alertSuccess, ['Content copied to clipboard(已复制到剪贴板)']);
   };
 
   getIframeHtml = () => {
@@ -77,8 +77,9 @@ export class ShareEmbed extends PureComponent<Props, State> {
       <>
         <p className="share-modal-info-text">Generate HTML for embedding an iframe with this panel.</p>
         <Field
-          label="Current time range"
-          description={isRelativeTime ? 'Transforms the current relative time range to an absolute time range' : ''}
+          label="Current time range(当前时间范围)"
+          //description={isRelativeTime ? 'Transforms the current relative time range to an absolute time range' : ''}
+          description={isRelativeTime ? '将当前相对时间范围转换为绝对时间范围' : ''}
         >
           <Switch
             id="share-current-time-range"
@@ -86,13 +87,14 @@ export class ShareEmbed extends PureComponent<Props, State> {
             onChange={this.onUseCurrentTimeRangeChange}
           />
         </Field>
-        <Field label="Theme">
+        <Field label="Theme(主题)">
           <RadioButtonGroup options={themeOptions} value={selectedTheme} onChange={this.onThemeChange} />
         </Field>
         <Field
-          label="Embed HTML"
-          description="The HTML code below can be pasted and included in another web page. Unless anonymous access is enabled, 
-                the user viewing that page need to be signed into Grafana for the graph to load."
+          label="Embed HTML(嵌入HTML)"
+          //description="The HTML code below can be pasted and included in another web page. Unless anonymous access is enabled,
+          //     the user viewing that page need to be signed into Grafana for the graph to load."
+          description="下面的HTML代码可以粘贴并包含在另一个网页中。除非启用匿名访问，否则查看该页面的用户需要登录到Grafana才能加载图形。"
         >
           <TextArea rows={5} value={iframeHtml} onChange={this.onIframeHtmlChange}></TextArea>
         </Field>

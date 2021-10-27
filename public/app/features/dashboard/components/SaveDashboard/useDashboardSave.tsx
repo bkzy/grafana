@@ -31,7 +31,7 @@ export const useDashboardSave = (dashboard: DashboardModel) => {
 
       // important that these happen before location redirect below
       appEvents.publish(new DashboardSavedEvent());
-      appEvents.emit(AppEvents.alertSuccess, ['Dashboard saved']);
+      appEvents.emit(AppEvents.alertSuccess, ['Dashboard saved(保存成功)']);
 
       const currentPath = locationService.getLocation().pathname;
       const newUrl = locationUtil.stripBaseFromUrl(state.value.url);

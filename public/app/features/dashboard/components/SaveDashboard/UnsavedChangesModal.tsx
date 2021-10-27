@@ -20,7 +20,7 @@ export const UnsavedChangesModal: React.FC<UnsavedChangesModalProps> = ({
   return (
     <Modal
       isOpen={true}
-      title="Unsaved changes"
+      title="Unsaved changes(放弃更改)"
       onDismiss={onDismiss}
       icon="exclamation-triangle"
       className={css`

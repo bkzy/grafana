@@ -45,7 +45,7 @@ export default function BottomSection() {
   return (
     <div data-testid="bottom-section-items" className={styles.container}>
       {!isSignedIn && (
-        <NavBarItem label="Sign In" target="_self" url={forcedLoginUrl}>
+        <NavBarItem label="登录" target="_self" url={forcedLoginUrl}>
           <Icon name="signout" size="xl" />
         </NavBarItem>
       )}

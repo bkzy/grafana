@@ -30,7 +30,7 @@ import { notifyApp } from '../../../core/actions';
 import { runRequest } from '../../query/state/runRequest';
 import { decorateData } from '../utils/decorators';
 import { createErrorNotification } from '../../../core/copy/appNotification';
-import { localStorageFullAction, richHistoryLimitExceededAction, richHistoryUpdatedAction, stateSave } from './main';
+import { richHistoryUpdatedAction, stateSave } from './main';
 import { AnyAction, createAction, PayloadAction } from '@reduxjs/toolkit';
 import { updateTime } from './time';
 import { historyUpdatedAction } from './history';
@@ -285,6 +285,7 @@ export const runQueries = (
     const exploreItemState = getState().explore[exploreId]!;
     const {
       datasourceInstance,
+      queries,
       containerWidth,
       isLive: live,
       range,
@@ -297,11 +298,6 @@ export const runQueries = (
       cache,
     } = exploreItemState;
     let newQuerySub;
-
-    const queries = exploreItemState.queries.map((query) => ({
-      ...query,
-      datasource: query.datasource || datasourceInstance?.name,
-    }));
 
     const cachedValue = getResultsFromCache(cache, absoluteRange);
 
@@ -368,25 +364,17 @@ export const runQueries = (
             if (!data.error && firstResponse) {
               // Side-effect: Saving history in localstorage
               const nextHistory = updateHistory(history, datasourceId, queries);
-              const { richHistory: nextRichHistory, localStorageFull, limitExceeded } = addToRichHistory(
+              const nextRichHistory = addToRichHistory(
                 richHistory || [],
                 datasourceId,
                 datasourceName,
                 queries,
                 false,
                 '',
-                '',
-                !getState().explore.localStorageFull,
-                !getState().explore.richHistoryLimitExceededWarningShown
+                ''
               );
               dispatch(historyUpdatedAction({ exploreId, history: nextHistory }));
               dispatch(richHistoryUpdatedAction({ richHistory: nextRichHistory }));
-              if (localStorageFull) {
-                dispatch(localStorageFullAction());
-              }
-              if (limitExceeded) {
-                dispatch(richHistoryLimitExceededAction());
-              }
 
               // We save queries to the URL here so that only successfully run queries change the URL.
               dispatch(stateSave({ replace: options?.replaceUrl }));
