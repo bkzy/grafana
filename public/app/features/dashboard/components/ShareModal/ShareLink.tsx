@@ -84,10 +84,11 @@ export class ShareLink extends PureComponent<Props, State> {
   };
 
   render() {
-    const { panel } = this.props;
-    const isRelativeTime = this.props.dashboard ? this.props.dashboard.time.to === 'now' : false;
+    const { panel, dashboard } = this.props;
+    const isRelativeTime = dashboard ? dashboard.time.to === 'now' : false;
     const { useCurrentTimeRange, useShortUrl, selectedTheme, shareUrl, imageUrl } = this.state;
     const selectors = e2eSelectors.pages.SharePanelModal;
+    const isDashboardSaved = Boolean(dashboard.id);
 
     return (
       <>
@@ -127,13 +128,25 @@ export class ShareLink extends PureComponent<Props, State> {
             />
           </Field>
         </FieldSet>
+
         {panel && config.rendererAvailable && (
-          <div className="gf-form">
-            <a href={imageUrl} target="_blank" rel="noreferrer" aria-label={selectors.linkToRenderedImage}>
-              <Icon name="camera" /> Direct link rendered image(直接连接渲染图像)
-            </a>
-          </div>
+          <>
+            {isDashboardSaved && (
+              <div className="gf-form">
+                <a href={imageUrl} target="_blank" rel="noreferrer" aria-label={selectors.linkToRenderedImage}>
+                  <Icon name="camera" /> Direct link rendered image(直接连接渲染图像)
+                </a>
+              </div>
+            )}
+
+            {!isDashboardSaved && (
+              <Alert severity="info" title="Dashboard is not saved(仪表面板尚未保存)" bottomSpacing={0}>
+                To render a panel image, you must save the dashboard first.(要渲染面板图像,必须先保存仪表面板。)
+              </Alert>
+            )}
+          </>
         )}
+
         {panel && !config.rendererAvailable && (
           <Alert severity="info" title="Image renderer plugin not installed(未安装图像渲染器插件)" bottomSpacing={0}>
             <>To render a panel image, you must install the(为了渲染面板图形，您必须安装渲染插件) </>

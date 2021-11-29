@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=alpine:3.14.2
+ARG BASE_IMAGE=alpine:3.14.3
 FROM ${BASE_IMAGE}
 
 ARG GRAFANA_TGZ="grafana-latest.linux-x64-musl.tar.gz"
@@ -28,6 +28,9 @@ WORKDIR $GF_PATHS_HOME
 
 RUN apk add --no-cache ca-certificates bash tzdata && \
     apk add --no-cache openssl musl-utils
+
+# Update out of date ncurses dependency which can stack overflow. This should be removed when alpine has released the 3.14.3 docker image.
+RUN apk upgrade ncurses-libs ncurses-terminfo-base --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main
 
 # Oracle Support for x86_64 only
 RUN if [ `arch` = "x86_64" ]; then \
