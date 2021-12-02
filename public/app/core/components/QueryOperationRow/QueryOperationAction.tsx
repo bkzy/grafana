@@ -37,7 +37,7 @@ export const QueryOperationAction: React.FC<QueryOperationActionProps> = ({
   );
 };
 
-QueryOperationAction.displayName = 'QueryOperationAction';
+QueryOperationAction.displayName = '查询操作';
 
 const getStyles = (theme: GrafanaTheme2) => {
   return {

@@ -88,14 +88,14 @@ export default class PermissionsListItem extends PureComponent<Props> {
         <td>
           {!item.inherited ? (
             <Button
-              aria-label={`Remove permission for "${item.name}"`}
+              aria-label={`移除"${item.name}"的权限`}
               size="sm"
               variant="destructive"
               icon="times"
               onClick={this.onRemoveItem}
             />
           ) : (
-            <Button aria-label={`Remove permission for "${item.name}" (Disabled)`} size="sm" disabled icon="times" />
+            <Button aria-label={`移除"${item.name}"的权限 (禁用)`} size="sm" disabled icon="times" />
           )}
         </td>
       </tr>

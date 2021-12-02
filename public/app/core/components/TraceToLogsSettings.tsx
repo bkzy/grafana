@@ -37,7 +37,7 @@ export function TraceToLogsSettings({ options, onOptionsChange }: Props) {
       </div>
 
       <InlineFieldRow>
-        <InlineField tooltip="The data source the trace is going to navigate to" label="Data source" labelWidth={26}>
+        <InlineField tooltip="跟踪要导航到的数据源" label="数据源" labelWidth={26}>
           <DataSourcePicker
             pluginId="loki"
             current={options.jsonData.tracesToLogs?.datasourceUid}

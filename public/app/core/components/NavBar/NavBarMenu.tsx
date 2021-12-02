@@ -30,7 +30,7 @@ export function NavBarMenu({ activeItem, navItems, onClose }: Props) {
       <div data-testid="navbarmenu" className={styles.container} ref={ref} {...overlayProps}>
         <div className={styles.header}>
           <Icon name="bars" size="xl" />
-          <IconButton aria-label="Close navigation menu" name="times" onClick={onClose} size="xl" variant="secondary" />
+          <IconButton aria-label="关闭导航菜单" name="times" onClick={onClose} size="xl" variant="secondary" />
         </div>
         <nav className={styles.content}>
           <CustomScrollbar>

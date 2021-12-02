@@ -82,7 +82,7 @@ export const QueryOperationRow: React.FC<QueryOperationRowProps> = ({
           onClick={onRowToggle}
         />
         {title && (
-          <div className={styles.titleWrapper} onClick={onRowToggle} aria-label="Query operation row title">
+          <div className={styles.titleWrapper} onClick={onRowToggle} aria-label="查询操作行标题">
             <div className={cx(styles.title, disabled && styles.disabled)}>{titleElement}</div>
           </div>
         )}
@@ -189,4 +189,4 @@ const getQueryOperationRowStyles = stylesFactory((theme: GrafanaTheme) => {
   };
 });
 
-QueryOperationRow.displayName = 'QueryOperationRow';
+QueryOperationRow.displayName = '查询操作行';

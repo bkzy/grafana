@@ -30,25 +30,25 @@ export const LoginForm: FC<Props> = ({ children, onSubmit, isLoggingIn, password
       <Form onSubmit={onSubmit} validateOn="onChange">
         {({ register, errors }) => (
           <>
-            <Field label="Email or username" invalid={!!errors.user} error={errors.user?.message}>
+            <Field label="Email 或 用户名" invalid={!!errors.user} error={errors.user?.message}>
               <Input
-                {...register('user', { required: 'Email or username is required' })}
+                {...register('user', { required: 'Email 或 用户名是必填项' })}
                 autoFocus
                 autoCapitalize="none"
                 placeholder={loginHint}
                 aria-label={selectors.pages.Login.username}
               />
             </Field>
-            <Field label="Password" invalid={!!errors.password} error={errors.password?.message}>
+            <Field label="密码" invalid={!!errors.password} error={errors.password?.message}>
               <PasswordField
                 id="current-password"
                 autoComplete="current-password"
                 passwordHint={passwordHint}
-                {...register('password', { required: 'Password is required' })}
+                {...register('password', { required: '密码是必填项' })}
               />
             </Field>
             <Button aria-label={selectors.pages.Login.submit} className={submitButton} disabled={isLoggingIn}>
-              {isLoggingIn ? 'Logging in...' : 'Log in'}
+              {isLoggingIn ? '正在登录中...' : '登录'}
             </Button>
             {children}
           </>

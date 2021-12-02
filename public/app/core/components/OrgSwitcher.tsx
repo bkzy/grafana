@@ -51,7 +51,7 @@ export class OrgSwitcher extends React.PureComponent<Props, State> {
 
     return (
       <Modal
-        title="Switch Organization"
+        title="切换组织"
         icon="arrow-random"
         onDismiss={onDismiss}
         isOpen={true}

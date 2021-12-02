@@ -28,7 +28,7 @@ export class PluginHelp extends PureComponent<Props, State> {
   }
 
   constructPlaceholderInfo() {
-    return 'No plugin help or readme markdown file was found';
+    return '未发现插件的帮助文档';
   }
 
   loadHelp = () => {

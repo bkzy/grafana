@@ -40,8 +40,8 @@ export const PanelTypeFilter = ({ onChange: propsOnChange, maxMenuHeight }: Prop
     defaultOptions: true,
     getOptionLabel: (i: any) => i.label,
     getOptionValue: (i: any) => i.value,
-    noOptionsMessage: 'No Panel types found',
-    placeholder: 'Filter by type',
+    noOptionsMessage: '没有发现面板类型',
+    placeholder: '通过类型筛选',
     styles: resetSelectStyles(),
     maxMenuHeight,
     options,
@@ -56,7 +56,7 @@ export const PanelTypeFilter = ({ onChange: propsOnChange, maxMenuHeight }: Prop
           Clear types
         </span>
       )}
-      <MultiSelect menuShouldPortal {...selectOptions} prefix={<Icon name="filter" />} aria-label="Panel Type filter" />
+      <MultiSelect menuShouldPortal {...selectOptions} prefix={<Icon name="filter" />} aria-label="面板类型筛选" />
     </div>
   );
 };

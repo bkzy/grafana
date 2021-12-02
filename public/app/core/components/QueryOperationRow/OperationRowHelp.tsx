@@ -27,7 +27,7 @@ function markdownHelper(markdown: string) {
   return <div className="markdown-html" dangerouslySetInnerHTML={{ __html: helpHtml }} />;
 }
 
-OperationRowHelp.displayName = 'OperationRowHelp';
+OperationRowHelp.displayName = '操作行帮助';
 
 const getStyles = (theme: GrafanaTheme2) => {
   const borderRadius = theme.shape.borderRadius();

@@ -49,7 +49,7 @@ export class LoginCtrl extends PureComponent<Props, State> {
     };
 
     if (config.loginError) {
-      appEvents.emit(AppEvents.alertWarning, ['Login Failed', config.loginError]);
+      appEvents.emit(AppEvents.alertWarning, ['登录失败', config.loginError]);
     }
   }
 

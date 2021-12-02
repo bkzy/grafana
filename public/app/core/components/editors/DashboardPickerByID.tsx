@@ -50,8 +50,8 @@ export const DashboardPickerByID: FC<Props> = ({
       defaultOptions={true}
       loadOptions={debouncedSearch}
       onChange={onChange}
-      placeholder="Select dashboard"
-      noOptionsMessage="No dashboards found"
+      placeholder="选择仪表面板"
+      noOptionsMessage="没有发现仪表面板"
       value={option}
       invalid={invalid}
       disabled={disabled}
@@ -65,7 +65,7 @@ async function getDashboards(query = ''): Promise<Array<SelectableValue<Dashboar
     const value: DashboardPickerItem = {
       id,
       uid,
-      label: `${folderTitle ?? 'General'}/${title}`,
+      label: `${folderTitle ?? '全部'}/${title}`,
     };
 
     return { value, label: value.label };

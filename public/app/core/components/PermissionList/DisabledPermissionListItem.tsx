@@ -25,7 +25,7 @@ export default class DisabledPermissionListItem extends Component<Props, any> {
         <td>
           <div className="gf-form">
             <Select
-              aria-label={`Permission level for "${item.name}"`}
+              aria-label={`"${item.name}"的权限等级`}
               options={dashboardPermissionLevels}
               onChange={() => {}}
               disabled={true}
@@ -35,7 +35,7 @@ export default class DisabledPermissionListItem extends Component<Props, any> {
           </div>
         </td>
         <td>
-          <Button aria-label={`Remove permission for "${item.name}"`} size="sm" icon="lock" disabled />
+          <Button aria-label={`移除"${item.name}"的权限`} size="sm" icon="lock" disabled />
         </td>
       </tr>
     );

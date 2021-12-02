@@ -79,7 +79,7 @@ export const RolePickerInput = ({
           onMouseDown={stopPropagation}
           onChange={onInputChange}
           data-testid="role-picker-input"
-          placeholder={isFocused ? 'Select role' : ''}
+          placeholder={isFocused ? '选择角色' : ''}
           value={query}
         />
       )}

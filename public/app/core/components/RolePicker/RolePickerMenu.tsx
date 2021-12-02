@@ -26,7 +26,7 @@ const BuiltinRoleOption: Array<SelectableValue<OrgRole>> = BuiltinRoles.map((r) 
 
 const fixedRoleGroupNames: Record<string, string> = {
   ldap: 'LDAP',
-  current: 'Current org',
+  current: '当前组织',
 };
 
 interface RolePickerMenuProps {
@@ -173,7 +173,7 @@ export const RolePickerMenu = ({
 
   return (
     <div className={cx(styles.menu, customStyles.menuWrapper)}>
-      <div className={customStyles.menu} aria-label="Role picker menu">
+      <div className={customStyles.menu} aria-label="角色选择器菜单">
         <CustomScrollbar autoHide={false} autoHeightMax="300px" hideHorizontalTrack hideVerticalTrack>
           <div className={customStyles.menuSection}>
             <div className={customStyles.groupHeader}>Built-in roles</div>
@@ -321,7 +321,7 @@ export const RolePickerSubMenu = ({
   };
 
   return (
-    <div className={customStyles.subMenu} aria-label="Role picker submenu">
+    <div className={customStyles.subMenu} aria-label="角色选择器子菜单">
       <CustomScrollbar autoHide={false} autoHeightMax="300px" hideHorizontalTrack>
         <div className={styles.optionBody}>
           {options.map((option, i) => (
@@ -386,7 +386,7 @@ export const RoleMenuOption = React.forwardRef<HTMLDivElement, React.PropsWithCh
     };
 
     return (
-      <div ref={ref} className={wrapperClassName} aria-label="Role picker option" onClick={onChangeInternal}>
+      <div ref={ref} className={wrapperClassName} aria-label="角色选择器设置" onClick={onChangeInternal}>
         <Checkbox
           value={isSelected}
           className={customStyles.menuOptionCheckbox}
@@ -479,7 +479,7 @@ export const RoleMenuGroupOption = React.forwardRef<HTMLDivElement, RoleMenuGrou
 
     return (
       <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <div ref={ref} className={wrapperClassName} aria-label="Role picker option" onClick={onClickInternal}>
+        <div ref={ref} className={wrapperClassName} aria-label="角色选择器设置" onClick={onClickInternal}>
           <Checkbox
             value={isSelected}
             className={cx(customStyles.menuOptionCheckbox, {

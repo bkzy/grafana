@@ -30,7 +30,7 @@ export const enrichConfigItems = (
     const profileNode = items.find((bottomNavItem) => bottomNavItem.id === 'profile');
     if (profileNode) {
       profileNode.showOrgSwitcher = true;
-      profileNode.subTitle = `Current Org.: ${user?.orgName}`;
+      profileNode.subTitle = `当前组织: ${user?.orgName}`;
     }
   }
 
@@ -42,7 +42,7 @@ export const enrichConfigItems = (
       id: 'signin',
       section: NavSection.Config,
       target: '_self',
-      text: 'Sign in',
+      text: '登录',
       url: forcedLoginUrl,
     });
   }
@@ -54,7 +54,7 @@ export const enrichConfigItems = (
       link.children = [
         ...getFooterLinks(),
         {
-          text: 'Keyboard shortcuts',
+          text: '快捷键',
           icon: 'keyboard',
           onClick: onOpenShortcuts,
         },
@@ -65,7 +65,7 @@ export const enrichConfigItems = (
       link.children = [
         ...menuItems,
         {
-          text: 'Switch organization',
+          text: '切换组织',
           icon: 'arrow-random',
           onClick: toggleOrgSwitcher,
         },

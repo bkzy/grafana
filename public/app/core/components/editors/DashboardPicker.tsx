@@ -15,7 +15,7 @@ const getDashboards = (query = '') => {
   return backendSrv.search({ type: 'dash-db', query, limit: 100 }).then((result: DashboardSearchHit[]) => {
     return result.map((item: DashboardSearchHit) => ({
       value: item.uid,
-      label: `${item?.folderTitle ?? 'General'}/${item.title}`,
+      label: `${item?.folderTitle ?? '全部'}/${item.title}`,
     }));
   });
 };
@@ -55,8 +55,8 @@ export const DashboardPicker: FC<StandardEditorProps<string, any, any>> = ({ val
       defaultOptions={true}
       loadOptions={debouncedSearch}
       onChange={onPicked}
-      placeholder={placeholder ?? 'Select dashboard'}
-      noOptionsMessage="No dashboards found"
+      placeholder={placeholder ?? '选择仪表面板'}
+      noOptionsMessage="没有发现仪表面板"
       value={current}
     />
   );

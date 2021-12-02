@@ -48,7 +48,7 @@ export const RolePicker = ({
         setSelectedRoles(userRoles);
       } catch (e) {
         // TODO handle error
-        console.error('Error loading options');
+        console.error('加载选项时出错');
       } finally {
         setIsLoading(false);
       }

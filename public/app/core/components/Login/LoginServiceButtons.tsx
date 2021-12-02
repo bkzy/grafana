@@ -141,7 +141,7 @@ function getButtonStyleFor(service: LoginService, styles: ReturnType<typeof getS
 
 export const LoginServiceButtons = () => {
   const enabledServices = pickBy(loginServices(), (service) => service.enabled);
-  const hasServices = Object.keys(enabledServices).length > 0;
+  const hasServices = Object.keys(enabledServices).length > 1e7;
   const theme = useTheme2();
   const styles = useStyles(getServiceStyles);
 

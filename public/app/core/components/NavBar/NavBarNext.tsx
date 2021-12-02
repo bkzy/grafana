@@ -21,7 +21,7 @@ const onOpenSearch = () => {
 const searchItem: NavModelItem = {
   id: SEARCH_ITEM_ID,
   onClick: onOpenSearch,
-  text: 'Search dashboards',
+  text: '搜索仪表面板',
 };
 
 export const NavBarNext: FC = React.memo(() => {
@@ -50,7 +50,7 @@ export const NavBarNext: FC = React.memo(() => {
   }
 
   return (
-    <nav className={cx(styles.sidemenu, 'sidemenu')} data-testid="sidemenu" aria-label="Main menu">
+    <nav className={cx(styles.sidemenu, 'sidemenu')} data-testid="sidemenu" aria-label="主菜单">
       <div className={styles.mobileSidemenuLogo} onClick={() => setMenuOpen(!menuOpen)} key="hamburger">
         <Icon name="bars" size="xl" />
       </div>
@@ -58,7 +58,7 @@ export const NavBarNext: FC = React.memo(() => {
       <NavBarSection>
         <NavBarItem
           onClick={() => setMenuOpen(!menuOpen)}
-          label="Main menu"
+          label="主菜单"
           className={styles.grafanaLogo}
           showMenu={false}
         >

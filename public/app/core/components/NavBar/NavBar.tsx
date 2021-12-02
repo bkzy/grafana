@@ -23,7 +23,7 @@ const onOpenSearch = () => {
 const searchItem: NavModelItem = {
   id: SEARCH_ITEM_ID,
   onClick: onOpenSearch,
-  text: 'Search dashboards',
+  text: '搜索仪表面板',
 };
 
 export const NavBar: FC = React.memo(() => {
@@ -52,13 +52,13 @@ export const NavBar: FC = React.memo(() => {
   }
 
   return (
-    <nav className={cx(styles.sidemenu, 'sidemenu')} data-testid="sidemenu" aria-label="Main menu">
+    <nav className={cx(styles.sidemenu, 'sidemenu')} data-testid="sidemenu" aria-label="主菜单">
       <div className={styles.mobileSidemenuLogo} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} key="hamburger">
         <Icon name="bars" size="xl" />
       </div>
 
       <NavBarSection>
-        <NavBarItem url={homeUrl} label="Home" className={styles.grafanaLogo} showMenu={false}>
+        <NavBarItem url={homeUrl} label="主页" className={styles.grafanaLogo} showMenu={false}>
           <Branding.MenuLogo />
         </NavBarItem>
         <NavBarItem

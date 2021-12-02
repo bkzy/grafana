@@ -100,7 +100,7 @@ class AddPermissions extends Component<Props, NewDashboardAclItem> {
           {() => (
             <HorizontalGroup>
               <Select
-                aria-label="Role to add new permission to"
+                aria-label="向角色添加新权限"
                 isSearchable={false}
                 value={this.state.type}
                 options={dashboardAclTargets}
@@ -119,7 +119,7 @@ class AddPermissions extends Component<Props, NewDashboardAclItem> {
               <span className={styles.label}>Can</span>
 
               <Select
-                aria-label="Permission level"
+                aria-label="权限等级"
                 isSearchable={false}
                 value={this.state.permission}
                 options={dashboardPermissionLevels}

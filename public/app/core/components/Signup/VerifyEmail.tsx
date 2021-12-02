@@ -43,26 +43,26 @@ export const VerifyEmail: FC = () => {
           <Legend>Verify Email</Legend>
           <Field
             label="Email"
-            description="Enter your email address to get a verification link sent to you"
+            description="输入您的电子邮件地址以获取发送给您的验证链接"
             invalid={!!errors.email}
             error={errors.email?.message}
           >
             <Input
               id="email"
               {...register('email', {
-                required: 'Email is required',
+                required: '密码是必填项',
                 pattern: {
                   value: /^\S+@\S+$/,
-                  message: 'Email is invalid',
+                  message: 'Email 地址无效',
                 },
               })}
               placeholder="Email"
             />
           </Field>
           <HorizontalGroup>
-            <Button>Send verification email</Button>
+            <Button>发送验证Email</Button>
             <LinkButton fill="text" href={getConfig().appSubUrl + '/login'}>
-              Back to login
+              返回登录页面
             </LinkButton>
           </HorizontalGroup>
         </>
