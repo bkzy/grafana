@@ -1,7 +1,7 @@
 load('scripts/drone/vault.star', 'from_secret', 'github_token', 'pull_secret', 'drone_token')
 
 grabpl_version = '2.6.3'
-build_image = 'grafana/build-container:1.4.3'
+build_image = 'grafana/build-container:1.4.3-1'
 publish_image = 'grafana/grafana-ci-deploy:1.3.1'
 grafana_docker_image = 'grafana/drone-grafana-docker:0.3.2'
 deploy_docker_image = 'us.gcr.io/kubernetes-dev/drone/plugins/deploy-image'
@@ -686,6 +686,7 @@ def postgres_integration_tests_step():
             'POSTGRES_HOST': 'postgres',
         },
         'commands': [
+            'apt-get update',
             'apt-get install -yq postgresql-client',
             'dockerize -wait tcp://postgres:5432 -timeout 120s',
             'psql -p 5432 -h postgres -U grafanatest -d grafanatest -f ' +
@@ -709,6 +710,7 @@ def mysql_integration_tests_step():
             'MYSQL_HOST': 'mysql',
         },
         'commands': [
+            'apt-get update',
             'apt-get install -yq default-mysql-client',
             'dockerize -wait tcp://mysql:3306 -timeout 120s',
             'cat devenv/docker/blocks/mysql_tests/setup.sql | mysql -h mysql -P 3306 -u root -prootpass',
