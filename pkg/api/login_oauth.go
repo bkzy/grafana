@@ -82,6 +82,8 @@ func (hs *HTTPServer) OAuthLogin(ctx *models.ReqContext) {
 		return
 	}
 
+	provider.AuthUrl = auth_url_check(provider.AuthUrl, ctx.Req.Host)
+
 	connect, err := hs.SocialService.GetConnector(name)
 	if err != nil {
 		hs.handleOAuthLoginError(ctx, loginInfo, LoginError{
