@@ -35,9 +35,9 @@ func (hs *HTTPServer) LoginView(c *models.ReqContext) {
 	}
 
 	enabledOAuths := make(map[string]interface{})
-	for key, oauth := range setting.OAuthService.OAuthInfos {
-		enabledOAuths[key] = map[string]string{"name": oauth.Name}
-	}
+	//for key, oauth := range setting.OAuthService.OAuthInfos {
+	//	enabledOAuths[key] = map[string]string{"name": oauth.Name}
+	//}
 
 	viewData.Settings["oauth"] = enabledOAuths
 	viewData.Settings["samlEnabled"] = setting.IsEnterprise && hs.Cfg.SAMLEnabled
