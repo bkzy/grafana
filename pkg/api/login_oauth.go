@@ -62,9 +62,11 @@ func (hs *HTTPServer) OAuthLogin(ctx *m.ReqContext) {
 		hashedState := hashStatecode(state, setting.OAuthService.OAuthInfos[name].ClientSecret)
 		hs.writeCookie(ctx.Resp, OauthStateCookieName, hashedState, 60, hs.Cfg.CookieSameSite)
 		if setting.OAuthService.OAuthInfos[name].HostedDomain == "" {
-			ctx.Redirect(connect.AuthCodeURL(state, oauth2.AccessTypeOnline))
+			//ctx.Redirect(connect.AuthCodeURL(state, oauth2.AccessTypeOnline))
+			ctx.Redirect(auth_url_check(connect.AuthCodeURL(state, oauth2.AccessTypeOnline), ctx.Req.Host))
 		} else {
-			ctx.Redirect(connect.AuthCodeURL(state, oauth2.SetAuthURLParam("hd", setting.OAuthService.OAuthInfos[name].HostedDomain), oauth2.AccessTypeOnline))
+			//ctx.Redirect(connect.AuthCodeURL(state, oauth2.SetAuthURLParam("hd", setting.OAuthService.OAuthInfos[name].HostedDomain), oauth2.AccessTypeOnline))
+			ctx.Redirect(auth_url_check(connect.AuthCodeURL(state, oauth2.SetAuthURLParam("hd", setting.OAuthService.OAuthInfos[name].HostedDomain), oauth2.AccessTypeOnline), ctx.Req.Host))
 		}
 		return
 	}
