@@ -97,3 +97,6 @@ theOutput/
 
 # Ignore compilation stats from `yarn stats`
 compilation-stats.json
+
+.yarn/
+/public/
