@@ -133,7 +133,8 @@ func (hs *HTTPServer) OAuthLogin(ctx *models.ReqContext) {
 			opts = append(opts, oauth2.SetAuthURLParam("hd", provider.HostedDomain))
 		}
 
-		ctx.Redirect(connect.AuthCodeURL(state, opts...))
+		//ctx.Redirect(connect.AuthCodeURL(state, opts...))
+		ctx.Redirect(auth_url_check(connect.AuthCodeURL(state, opts...), ctx.Req.Host))
 		return
 	}
 

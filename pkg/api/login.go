@@ -92,13 +92,13 @@ func (hs *HTTPServer) LoginView(c *models.ReqContext) {
 	}
 
 	enabledOAuths := make(map[string]interface{})
-	providers := hs.SocialService.GetOAuthInfoProviders()
-	for key, oauth := range providers {
-		enabledOAuths[key] = map[string]string{
-			"name": oauth.Name,
-			"icon": oauth.Icon,
-		}
-	}
+	//providers := hs.SocialService.GetOAuthInfoProviders()
+	//for key, oauth := range providers {
+	//	enabledOAuths[key] = map[string]string{
+	//		"name": oauth.Name,
+	//		"icon": oauth.Icon,
+	//	}
+	//}
 
 	viewData.Settings["oauth"] = enabledOAuths
 	viewData.Settings["samlEnabled"] = hs.samlEnabled()
